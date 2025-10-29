@@ -755,6 +755,12 @@ footer {
     
     h2 {
         font-size: 1.5rem;
+        gap: 8px;
+    }
+    
+    .section-icon {
+        width: 20px;
+        height: 20px;
     }
     
     section {
