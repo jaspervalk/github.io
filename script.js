@@ -1,9 +1,7 @@
-// Dark Mode Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to 'light'
-const currentTheme = localStorage.getItem('theme') || 'light';
+const currentTheme = localStorage.getItem('theme') || 'dark';
 htmlElement.setAttribute('data-theme', currentTheme);
 
 themeToggle.addEventListener('click', function() {
@@ -14,7 +12,6 @@ themeToggle.addEventListener('click', function() {
     localStorage.setItem('theme', newTheme);
 });
 
-// Custom Cursor
 const cursorDot = document.querySelector("[data-cursor-dot]");
 const cursorOutline = document.querySelector("[data-cursor-outline]");
 
@@ -31,7 +28,6 @@ window.addEventListener("mousemove", function (e) {
     }, { duration: 500, fill: "forwards" });
 });
 
-// Expand cursor on link hover
 const links = document.querySelectorAll('a, button, .work-item, .education-item, .project-item');
 
 links.forEach(link => {
@@ -46,7 +42,6 @@ links.forEach(link => {
     });
 });
 
-// Smooth scroll reveal animation
 const faders = document.querySelectorAll('.fade-in');
 
 const appearOptions = {
@@ -69,7 +64,6 @@ faders.forEach(fader => {
     appearOnScroll.observe(fader);
 });
 
-// Parallax effect on scroll
 let lastScrollTop = 0;
 const header = document.querySelector('header');
 
@@ -83,7 +77,6 @@ window.addEventListener('scroll', function() {
     lastScrollTop = scrollTop;
 });
 
-// Add smooth scroll behavior for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -98,7 +91,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add typing effect to tagline (optional - comment out if too much)
+
 const tagline = document.querySelector('.tagline');
 if (tagline) {
     const text = tagline.textContent;
@@ -113,11 +106,10 @@ if (tagline) {
         }
     }
     
-    // Start typing after a small delay
     setTimeout(typeWriter, 500);
 }
 
-// Add random floating animation to sections
+
 const sections = document.querySelectorAll('section');
 sections.forEach((section, index) => {
     section.style.animationDelay = `${index * 0.1}s`;
