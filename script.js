@@ -28,7 +28,7 @@ window.addEventListener("mousemove", function (e) {
     }, { duration: 500, fill: "forwards" });
 });
 
-const links = document.querySelectorAll('a, button, .work-item, .education-item, .project-item');
+const links = document.querySelectorAll('a, button, .work-item, .education-item, .project-item, .sidebar-toggle, .sidebar-link');
 
 links.forEach(link => {
     link.addEventListener('mouseenter', () => {
@@ -113,6 +113,53 @@ if (tagline) {
 const sections = document.querySelectorAll('section');
 sections.forEach((section, index) => {
     section.style.animationDelay = `${index * 0.1}s`;
+});
+
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+let sidebarHoverTimeout;
+
+function showSidebar() {
+    clearTimeout(sidebarHoverTimeout);
+    sidebar.classList.add('sidebar-hover');
+}
+
+function hideSidebar() {
+    sidebarHoverTimeout = setTimeout(() => {
+        sidebar.classList.remove('sidebar-hover');
+    }, 300);
+}
+
+sidebar.addEventListener('mouseenter', showSidebar);
+sidebar.addEventListener('mouseleave', hideSidebar);
+
+sidebarToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('active');
+    sidebar.classList.remove('sidebar-hover');
+});
+
+document.addEventListener('click', function(e) {
+    if (!sidebar.contains(e.target) && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+    }
+});
+
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            sidebar.classList.remove('active');
+        }
+    });
 });
 
 console.log('Portfolio loaded');
