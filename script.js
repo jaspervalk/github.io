@@ -133,7 +133,8 @@ function hideSidebar() {
 sidebar.addEventListener('mouseenter', showSidebar);
 sidebar.addEventListener('mouseleave', hideSidebar);
 
-sidebarToggle.addEventListener('click', function() {
+sidebarToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
     sidebar.classList.toggle('active');
     sidebar.classList.remove('sidebar-hover');
 });

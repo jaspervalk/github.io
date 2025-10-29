@@ -181,15 +181,16 @@ body {
 }
 
 .sidebar.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .sidebar.active .hamburger-line:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
 }
 
 .sidebar.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .sidebar-content {
