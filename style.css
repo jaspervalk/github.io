@@ -56,6 +56,7 @@ body {
     transition: var(--transition);
     z-index: 1000;
     box-shadow: 0 4px 15px var(--shadow);
+    transform-origin: center center;
 }
 
 .theme-toggle:hover {
@@ -65,10 +66,12 @@ body {
 
 .theme-toggle .sun {
     display: block;
+    position: absolute;
 }
 
 .theme-toggle .moon {
     display: none;
+    position: absolute;
 }
 
 [data-theme="dark"] .theme-toggle .sun {
@@ -77,6 +80,25 @@ body {
 
 [data-theme="dark"] .theme-toggle .moon {
     display: block;
+}
+
+.theme-toggle svg {
+    stroke: var(--primary-color);
+    transition: var(--transition);
+    width: 24px;
+    height: 24px;
+}
+
+.theme-toggle:hover svg {
+    stroke: #ffffff;
+}
+
+[data-theme="dark"] .theme-toggle svg {
+    stroke: var(--primary-color);
+}
+
+[data-theme="dark"] .theme-toggle:hover svg {
+    stroke: #ffffff;
 }
 
 /* Sidebar */
@@ -355,6 +377,11 @@ h1 {
 
 .resume-icon {
     font-size: 1.3rem;
+}
+
+.resume-icon svg {
+    stroke: #ffffff;
+    transition: var(--transition);
 }
 
 /* Skills Section */
