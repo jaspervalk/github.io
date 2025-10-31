@@ -136,10 +136,15 @@ body {
     z-index: -1;
 }
 
-.sidebar:hover,
-.sidebar.active,
-.sidebar.sidebar-hover {
+.sidebar.active {
     left: 0;
+}
+
+@media (min-width: 1024px) {
+    .sidebar:hover,
+    .sidebar.sidebar-hover {
+        left: 0;
+    }
 }
 
 .sidebar-toggle {
@@ -289,16 +294,13 @@ body {
 }
 
 .cursor-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background-color: var(--accent-color);
 }
 
 .cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--accent-color);
-    transition: all 0.15s ease-out;
+    display: none;
 }
 
 /* On desktop, show custom cursor */

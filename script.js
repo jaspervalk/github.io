@@ -13,7 +13,6 @@ themeToggle.addEventListener('click', function() {
 });
 
 const cursorDot = document.querySelector("[data-cursor-dot]");
-const cursorOutline = document.querySelector("[data-cursor-outline]");
 
 window.addEventListener("mousemove", function (e) {
     const posX = e.clientX;
@@ -21,23 +20,16 @@ window.addEventListener("mousemove", function (e) {
 
     cursorDot.style.left = `${posX}px`;
     cursorDot.style.top = `${posY}px`;
-
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
 });
 
 const links = document.querySelectorAll('a, button, .work-item, .education-item, .project-item, .sidebar-toggle, .sidebar-link');
 
 links.forEach(link => {
     link.addEventListener('mouseenter', () => {
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
     });
-    
+
     link.addEventListener('mouseleave', () => {
-        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
         cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
     });
 });
@@ -140,11 +132,12 @@ sidebar.addEventListener('mouseleave', hideSidebar);
 sidebarToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const isActive = sidebar.classList.contains('active');
-    
+
     if (isActive) {
         sidebar.classList.remove('active');
+        sidebar.classList.remove('sidebar-hover');
     } else {
         sidebar.classList.add('active');
         sidebar.classList.remove('sidebar-hover');
